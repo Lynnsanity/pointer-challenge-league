@@ -14,7 +14,8 @@ async def rules_page():
         one = ui.tab('Stakeholders')
         two = ui.tab('Participant Conduct')
         three = ui.tab('Competition Rules')
-        four = ui.tab('Prizes')
+        four = ui.tab('Scoring Rubric')
+        five = ui.tab('Prizes')
 
     with ui.tab_panels(tabs, value=one).classes('w-full bg-[#27282b] text-white'):
         with ui.tab_panel(one).classes('flex items-center justify-center text-left'):
@@ -24,4 +25,6 @@ async def rules_page():
         with ui.tab_panel(three):
             display_file_content('competition_rules.html')
         with ui.tab_panel(four):
+            display_file_content('scoring_rubric.html')
+        with ui.tab_panel(five):
             display_file_content('prizes.html')
