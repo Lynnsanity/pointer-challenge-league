@@ -18,8 +18,9 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 from nicegui import Client, app, ui
 
-from rules import rules_page
 from home import home_page
+from rules import rules_page
+from standings import standings_page
 
 user_env_var = os.environ.get('AUTH_USER')
 password_env_var = os.environ.get('AUTH_PASS')
