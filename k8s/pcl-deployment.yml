@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pcl
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pcl
+  namespace: pcl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pcl
+  template:
+    metadata:
+      labels:
+        app: pcl
+    spec:
+      containers:
+        - name: pcl
+          image: lynnsanity/pcl:1.0.0
+          env:
+            - name: AUTH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: pcl-secrets
+                  key: auth_user
+            - name: AUTH_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: pcl-secrets
+                  key: auth_pass
+            - name: STORAGE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: pcl-secrets
+                  key: storage_secret
+
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pcl-svc
+  namespace: pcl
+spec:
+  type: ClusterIP
+  selector:
+    app: pcl
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

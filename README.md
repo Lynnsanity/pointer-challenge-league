@@ -32,5 +32,15 @@ A browser window should open http://localhost:8080 showing PCL website.
 
 ### Make a Docker/Podman Build
 
-* TODO
+```sh
+# edit the VERSION file to whatever version you want to bump to then:
+make release
+```
+
+### K8s
+
+New image tag gets put into k8s/pcl-deployment.yml image and gets applied like:
+
+`kubectl -n pcl apply -f pcl-deployment.yml`
+
 
