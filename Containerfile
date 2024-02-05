@@ -1,17 +1,16 @@
-FROM python:3.11.3-slim
+FROM --platform=linux/amd64 python:3.11.3-slim
 
 USER root
 
 ENV PYTHONBUFFERED=1
 
+ENV PYTHONPATH=.
 
 # setting up working dir
 
 WORKDIR /usr/src/pcl
 
 ADD src /usr/src/pcl
-
-ENV PYTHONPATH=.
 
 COPY src/requirements.txt .
 
@@ -35,8 +34,3 @@ USER 1001
 EXPOSE 8080
 
 ENTRYPOINT ["python", "main.py"]
-
-
-
-
-
