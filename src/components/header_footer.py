@@ -8,7 +8,7 @@ def header_footer():
         with ui.row().classes('max-sm:hidden font-mono'):
             ui.button('Rules', icon='gavel', on_click=lambda: ui.open('/rules')).props('flat color=white')
             ui.button('Register', icon='feed', on_click=lambda: ui.open('/register')).props('flat color=white')
-            ui.button('Standings', icon='sports_esports', on_click=lambda: ui.open('/standings')).props('flat color=white')
+            ui.button('Standings', icon='emoji_events', on_click=lambda: ui.open('/standings')).props('flat color=white')
             ui.button('Contact', icon='contact_support', on_click=lambda: ui.open('/contact')).props('flat color=white')
         with ui.row().classes('sm:hidden'):
             with ui.button(icon='menu').props('flat color=white'):

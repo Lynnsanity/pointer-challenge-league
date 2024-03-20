@@ -14,7 +14,7 @@ async def home_page():
     carousel()
 
     with ui.row().classes('w-full bg-gradient-to-r from-yellow-500 to-purple-500 p-1'):
-        ui.image('img/ow2/home/ramm.webp')
+        ui.image('img/ow2/ramm.webp')
     #with ui.row().classes('grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mx-auto w-full h-2/3 flex items-center justify-center my-5'):
     #    ui.label('Some text here')
     #    ui.image('img/ow2/home/winston.png').classes('w-auto')
@@ -36,21 +36,61 @@ async def home_page():
         ui.label('GAMES WE PLAY').classes('text-5xl min-[320px]:text-4xl font-extrabold text-[#FFC82e] font-mono')
 
 
-    with ui.row().classes('relative overflow-hidden grid min-[320px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 my-3 w-full justify-center items-center text-center'):
-        with ui.row().classes('my-2 overflow-none bg-cover bg-no-repeat'):
-            with ui.image('img/games/overwatch.jpg').classes('object-cover mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg hover:opacity-50 aspect-square w-4/5 no-shadow bg-transparent border-yellow-500 border-[1px]'):
-                ui.label('Overwatch').classes('absolute w-full text-white text-5xl')
-        with ui.row().classes('my-2 overflow-none bg-cover bg-no-repeat'):
-            ui.image('img/games/fortnite.jpeg').classes('object-cover mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg hover:opacity-50 aspect-square w-4/5 bg-transparent border-purple-500 border-[1px]')
-        with ui.row().classes('my-2 overflow-none bg-cover bg-no-repeat'):
-            ui.image('img/games/league.png').classes('object-cover mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg hover:opacity-50 aspect-square w-4/5 bg-transparent border-yellow-500 border-[1px]')
-        with ui.row().classes('my-2 overflow-none bg-cover bg-no-repeat'):
-            ui.image('img/games/smashbros.jpeg').classes('object-cover mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg hover:opacity-50 aspect-square w-4/5 bg-transparent border-purple-500 border-[1px]')
-        with ui.row().classes('my-2 overflow-none bg-cover bg-no-repeat'):
-            ui.image('img/games/apex.jpeg').classes('object-cover mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg hover:opacity-50 aspect-square w-4/5 bg-transparent border-yellow-500 border-[1px]')
-        with ui.row().classes('my-2 overflow-none bg-cover bg-no-repeat'):
-            ui.image('img/games/rocketleague.jpeg').classes('object-cover mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg hover:opacity-70 aspect-square w-4/5 bg-transparent border-purple-500 border-[1px]')
-            #ui.image('./img/games/rocketleaguelogo.webp').classes('absolute mx-auto object-cover w-1/5')
+    with ui.row().classes('grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 w-full justify-center items-center text-center'):
+        
+            with ui.image('img/games/overwatch.jpg') \
+                    .classes('mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg \
+                             aspect-square w-4/5 no-shadow bg-transparent border-[#512698] border-2 mt-5'):
+                with ui.card() \
+                        .props('flat unelevated') \
+                        .classes('w-full h-full opacity-0 hover:opacity-100 flex justify-center items-center text-center'):
+                    ui.label('Overwatch 2') \
+                        .classes('w-full text-3xl font-mono font-bold text-black')
+
+            with ui.image('img/games/fortnite.jpeg') \
+                    .classes('mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg \
+                             aspect-square w-4/5 no-shadow bg-transparent border-[#ffc82e] border-2 mt-5'):
+                with ui.card() \
+                        .props('flat unelevated') \
+                        .classes('w-full h-full opacity-0 hover:opacity-100 flex justify-center items-center text-center'):
+                    ui.label('Fortnite').classes('w-full text-3xl font-mono font-bold text-black')
+
+            with ui.image('img/games/league.png') \
+                    .classes('mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg \
+                             aspect-square w-4/5 no-shadow bg-transparent border-[#512698] border-2 mt-5'):
+                with ui.card() \
+                        .props('flat unelevated') \
+                        .classes('w-full h-full opacity-0 hover:opacity-100 flex justify-center items-center text-center'):
+                    ui.label('League of Legends').classes('w-full text-3xl font-mono font-bold text-black')
+
+            with ui.image('img/games/smashbros.jpeg') \
+                    .classes('mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg \
+                             aspect-square w-4/5 no-shadow bg-transparent border-[#512698] border-2 mt-5'):
+                with ui.card() \
+                        .props('flat unelevated') \
+                        .classes('w-full h-full opacity-0 hover:opacity-100 flex justify-center items-center text-center'):
+                    ui.label('Super Smash Bros.').classes('w-full text-3xl font-mono font-bold text-black')
+
+            with ui.image('img/games/apex.jpeg') \
+                    .classes('mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg \
+                             aspect-square w-4/5 no-shadow bg-transparent border-[#ffc82e] border-2 mt-5'):
+                with ui.card() \
+                        .props('flat unelevated') \
+                        .classes('w-full h-full opacity-0 hover:opacity-100 flex justify-center items-center text-center'):
+                    ui.label('Apex Legends').classes('w-full text-3xl font-mono font-bold text-black')
+
+            with ui.image('img/games/rocketleague.jpeg') \
+                    .classes('mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg \
+                             aspect-square w-4/5 no-shadow bg-transparent border-[#512698] border-2 mt-5'):
+                with ui.card() \
+                        .props('flat unelevated') \
+                        .classes('w-full h-full opacity-0 hover:opacity-100 flex justify-center items-center text-center'):
+                    ui.image('img/games/rocketleaguelogo.webp').classes('w-full')
+
+    with ui.row().classes('mx-auto my-5 text-center'):
+        ui.label('CONTACT US').classes('text-5xl min-[320px]:text-4xl font-extrabold text-[#FFC82e] font-mono')
+
+
 
 
     #ui.query('body').classes('bg-gradient-to-t from-[#512698] to-[#FFC82e]')

@@ -6,8 +6,13 @@ from components.header_footer import header_footer
 @ui.page('/standings')
 async def standings_page():
     header_footer()
-
+    
     ui.query('body').style('background-color: #181818')
+    with ui.row().classes('flex justify-center items-center text-center'):
+        ui.label('Please stay tuned!').classes('w-full text-3xl flex justify-center font-mono text-[#ffc82e]')
+        ui.label('As more contestants continue to join, this page will be regularly updated \
+            with the tournament brackets once *date* has passed.') \
+            .classes('text-xl font-mono w-full flex justify-center text-center')
     #with ui.row().classes('mx-auto w-full h-full'):
     ui.mermaid('''
         graph LR
@@ -26,7 +31,6 @@ async def standings_page():
           D --- F
           E --- G
           F --- G
-          G --- Champion
     ''').on('error', lambda e: print(e.args['message'])).classes('mx-auto flex items-center justify-center').style('width:100%; height:auto;')
     #ui.mermaid('''
     #    flowchart  TD
