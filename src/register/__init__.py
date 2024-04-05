@@ -5,6 +5,7 @@ from register.form import form
 @ui.page('/register')
 async def register_page():
     header_footer()
+    ui.query('body').style('background-color: #181818')
     ui.image('img/ow2/formbanner.avif').classes('w-full md:h-[200px] lg:h-[300px] xl:h-[300px] 2xl:h-[300px]')
     with ui.row().classes('w-full flex justify-center items-center text-center'):
         ui.label('PCL Registration Form') \
