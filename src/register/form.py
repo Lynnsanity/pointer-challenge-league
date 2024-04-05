@@ -218,7 +218,7 @@ def form():
             with ui.row().classes('w-full flex text-start text-sm text-white'):
                     ui.markdown('How many substitutes?')
                     ui.radio([0, 1, 2], value=0, on_change=logic.update_visibility) \
-                        .props('dark color=purple-9')
+                        .props('dark color=purple-9 inline')
 
 
         ui.label('Contact Information').classes('w-full flex text-start text-lg text-[#ffc82e]')
