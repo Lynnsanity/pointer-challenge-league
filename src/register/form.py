@@ -1,7 +1,7 @@
 import re
 from nicegui import app, ui, events
 from email_validator import validate_email, EmailNotValidError
-
+from register.email import match_registration_received
 
 class Enable:
     def __init__(self) -> None:
@@ -33,18 +33,9 @@ class Enable:
 
     def on_change(self, e):
         field_id = e.sender.id
-        if field_id == "email_address":
-            result = self.is_valid_email(e.value)
-            if not self.is_not_empty(e.value):
-                e.sender.set_validation_message("Required field")
-            elif not result:
-                e.sender.set_validation_message("Please enter a valid email.")
-            else:
-                e.sender.clear_validation_message()
-        else:
-            valid = self.is_not_empty(e.value)
-            self.inputs[field_id] = valid
-            self.update()
+        valid = self.is_not_empty(e.value)
+        self.inputs[field_id] = valid
+        self.update()
 
     def update(self):
         for i in self.inputs.values():
@@ -94,7 +85,7 @@ class Logic:
         self.subtwo_firstname.visible = False
         self.subtwo_lastname.visible = False
         self.subtwo_ign.visible = False
-        
+
         # shows input 1 if 1 or 2 is selected
         if self.selected_value >= 1:
             self.subone_firstname.visible = True
@@ -107,9 +98,18 @@ class Logic:
             self.subtwo_lastname.visible = True
             self.subtwo_ign.visible = True
 
-async def submit_registration():
-    ui.notify('it gets this far')
 
+async def submit_registration_um(teamy):
+    return submit_registration(teamy=teamy)
+
+
+def submit_registration(teamy):
+    sent = match_registration_received()
+    if sent:
+        ui.notify('Registration Application Sent. Please check your email.', type='positive')
+        #ui.notify(teamy, close_button='OK')
+    else:
+        ui.notify('Registration not sent', type='negative')
 def form():
     enable = Enable()
     with ui.column().classes('flex items-center justify-center text-center \
@@ -118,12 +118,12 @@ def form():
         ui.label('Team Information').classes('w-full flex text-start text-lg text-[#ffc82e]')
 
         # team name
-        team_name = ui.input('Team Name *', on_change=enable.on_change, \
+        tn = ui.input('Team Name *', on_change=lambda e: team_name_text.set_text(e.value), \
                              validation={"Required field": enable.is_not_empty}) \
             .props('outlined v-model="text" color=amber dark') \
             .classes('w-full')
-
-
+        team_name_text = ui.label()
+        teeeam = str(team_name_text.text)
         # optional affiliated school
         with ui.input('University / College Name') \
             .props('outlined v-model="text" color=amber dark') \
@@ -240,8 +240,7 @@ def form():
             .props('dark')
 
         #register_button = ui.button('Submit Registration', on_click=lambda: submit_registration() if enable.no_errors else None)
-
-        register_button = ui.button('Submit Registration', on_click=submit_registration)
+        register_button = ui.button('Submit Registration', on_click=lambda e:submit_registration_um(teamy=teeeam))
         register_button.bind_enabled_from(enable, "no_errors")
 
 
