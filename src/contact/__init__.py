@@ -16,20 +16,20 @@ async def contact_page():
                 ui.label('Contact Us').classes('font-mono text-[#ffc82e] text-3xl pt-5')
                 ui.label('Have questions, comments, concerns and/or feedback?').classes('mt-5 font-mono text-xl')
                 ui.label('Feel free to send us a message').classes('font-mono text-xl')
-                first_name = ui.input('First Name', on_change=enable.on_change,
+                first_name = ui.input('First Name', on_change=enable.contact_on_change,
                                       validation={"Required field":enable.empty, "Character Limit Exceeded":enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full mt-5')
-                last_name = ui.input('Last Name', on_change=enable.on_change, \
+                last_name = ui.input('Last Name', on_change=enable.contact_on_change, \
                                      validation={"Required field": enable.empty, "Character Limit Exceeded":enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-                email_address = ui.input('Email Address', on_change=enable.on_change, \
+                email_address = ui.input('Email Address', on_change=enable.contact_on_change, \
                                          validation={"Required field": enable.empty, "Invalid Email Address":enable.is_valid_email,
                                                      "Character Limit Exceeded":enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-                message_summary = ui.textarea('Message Summary', on_change=enable.on_change, \
+                message_summary = ui.textarea('Message Summary', on_change=enable.contact_on_change, \
                                                       validation={"Required field": enable.empty, "Too many characters, max is 512": enable.message_char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
