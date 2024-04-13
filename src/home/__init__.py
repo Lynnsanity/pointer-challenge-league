@@ -9,6 +9,7 @@ from rules import rules_page
 async def home_page():
     header_footer()
 
+    ui.query('.nicegui-content').classes('p-0')
     ui.query('body').style('background-color: #181818')
     #ui.image('./img/ow2/home/season-open.png').classes('mx-auto')
     carousel()
