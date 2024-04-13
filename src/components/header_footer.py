@@ -2,7 +2,7 @@ from nicegui import app,ui
 
 
 def header_footer():
-    with ui.header(elevated=True).style('background-color: #181818').classes('items-center justify-between'):
+    with ui.header(elevated=True).style('background-color: #181818').classes('items-center justify-between fixed'):
         with ui.link('', '/home'):
             ui.image('./img/pcl-logos/glow-pcl.png').classes('w-[270px]')
         with ui.row().classes('max-sm:hidden font-mono'):
@@ -26,5 +26,5 @@ def header_footer():
                     ui.image('./img/uwsp-logos/uwsp-words.png').classes('w-[200px] ml-2')
                 with ui.link(target='https://www.uwsp.edu/esports/'):
                     ui.image('./img/uwsp-logos/uwsp-esports.png').classes('w-[150px] mt-2')
-            ui.label('example').classes('w-full flex items-center justify-center')
+            #ui.label('example').classes('w-full flex items-center justify-center')
 
