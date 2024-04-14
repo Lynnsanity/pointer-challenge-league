@@ -12,17 +12,17 @@ def form():
         ui.label('Team Information').classes('w-full flex text-start text-lg text-[#ffc82e]')
 
         # team name
-        team_name = ui.input('Team Name *', on_change=enable.on_change, \
+        team_name = ui.input('Team Name *', on_change=enable.registration_on_change, \
                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
             .props('outlined v-model="text" color=amber dark') \
             .classes('w-full')
         # optional affiliated school
-        with ui.input('University / College Name', on_change=enable.on_change,
+        with ui.input('University / College Name', on_change=enable.registration_on_change,
                       validation={"Character Limit Exceeded": enable.char_limit}) \
             .props('outlined v-model="text" color=amber dark') \
                 .classes('w-full mt-5') as school_name:
             ui.tooltip('Optional: If your team is officially affiliated with a Uni / College, enter the \
-                       school name here') .classes('bg-purple')
+                       school name here').classes('bg-purple')
 
         ui.label('Team Logo').classes('w-full flex text-start text-lg text-[#ffc82e] mt-5')
         team_logo = ui.upload(on_upload=lambda e: ui.notify(f'Uploaded {e.name}'),
@@ -43,15 +43,15 @@ def form():
             # captain (player 1)
             ui.label('Captain').classes('text-[#ffc82e]')
             with ui.row().classes('w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2'):
-                captain_firstname = ui.input('First Name *', on_change=enable.on_change,
+                captain_firstname = ui.input('First Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-                captain_lastname = ui.input('Last Name *', on_change=enable.on_change,
+                captain_lastname = ui.input('Last Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-            captain_ign = ui.input('In Game Name *', on_change=enable.on_change,
+            captain_ign = ui.input('In Game Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                 .props('outlined v-model="text" color=amber dark') \
                 .classes('w-full')
@@ -59,15 +59,15 @@ def form():
             # player 2
             ui.label('Player #2').classes('text-[#ffc82e]')
             with ui.row().classes('w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2'):
-                playertwo_firstname = ui.input('First Name *', on_change=enable.on_change,
+                playertwo_firstname = ui.input('First Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-                playertwo_lastname = ui.input('Last Name *', on_change=enable.on_change,
+                playertwo_lastname = ui.input('Last Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-            playertwo_ign = ui.input('In Game Name *', on_change=enable.on_change,
+            playertwo_ign = ui.input('In Game Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                 .props('outlined v-model="text" color=amber dark') \
                 .classes('w-full')
@@ -75,15 +75,15 @@ def form():
             # player 3
             ui.label('Player #3').classes('text-[#ffc82e]')
             with ui.row().classes('w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2'):
-                playerthree_firstname = ui.input('First Name *', on_change=enable.on_change,
+                playerthree_firstname = ui.input('First Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-                playerthree_lastname = ui.input('Last Name *', on_change=enable.on_change,
+                playerthree_lastname = ui.input('Last Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-            playerthree_ign = ui.input('In Game Name *', on_change=enable.on_change,
+            playerthree_ign = ui.input('In Game Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                 .props('outlined v-model="text" color=amber dark') \
                 .classes('w-full')
@@ -91,15 +91,15 @@ def form():
             # player 4
             ui.label('Player #4').classes('text-[#ffc82e]')
             with ui.row().classes('w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2'):
-                playerfour_firstname = ui.input('First Name *', on_change=enable.on_change,
+                playerfour_firstname = ui.input('First Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-                playerfour_lastname = ui.input('Last Name *', on_change=enable.on_change,
+                playerfour_lastname = ui.input('Last Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-            playerfour_ign = ui.input('In Game Name *', on_change=enable.on_change,
+            playerfour_ign = ui.input('In Game Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                 .props('outlined v-model="text" color=amber dark') \
                 .classes('w-full')
@@ -107,15 +107,15 @@ def form():
             # player 5
             ui.label('Player #5').classes('text-[#ffc82e]')
             with ui.row().classes('w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2'):
-                playerfive_firstname = ui.input('First Name *', on_change=enable.on_change,
+                playerfive_firstname = ui.input('First Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-                playerfive_lastname = ui.input('Last Name *', on_change=enable.on_change,
+                playerfive_lastname = ui.input('Last Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                     .props('outlined v-model="text" color=amber dark') \
                     .classes('w-full')
-            playerfive_ign = ui.input('In Game Name *', on_change=enable.on_change,
+            playerfive_ign = ui.input('In Game Name *', on_change=enable.registration_on_change,
                                              validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
                 .props('outlined v-model="text" color=amber dark') \
                 .classes('w-full')
@@ -137,11 +137,11 @@ def form():
         ui.label('Contact Information').classes('w-full flex text-start text-lg text-[#ffc82e]')
         
         # contact info
-        email_address = ui.input('Email Address *', on_change=enable.on_change, \
+        email_address = ui.input('Email Address *', on_change=enable.registration_on_change, \
                                  validation={"Required field": enable.empty, "Invalid Email": enable.is_valid_email, "Character Limit Exceeded": enable.char_limit}) \
             .props('outlined v-model="email" color=amber dark') \
             .classes('w-full')
-        phone_number = ui.input('Phone Number *', on_change=enable.on_change, \
+        phone_number = ui.input('Phone Number *', on_change=enable.registration_on_change, \
                                 validation={"Required field": enable.empty, "Invalid Phone Number": enable.is_valid_phone_number}) \
             .props('outlined v-model="tel" color=amber dark') \
             .classes('w-full')
