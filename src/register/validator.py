@@ -60,19 +60,19 @@ async def registration_submit_click(
     fields = {
         "captain_firstname": ("captain first name", captain_firstname),
         "captain_lastname": ("captain last name", captain_lastname),
-        "captain_ign": ("captain in game name", captain_firstname),
-        "playertwo_firstname": ("captain first name", captain_firstname),
-        "playertwo_lastname": ("captain last name", captain_lastname),
-        "playertwo_ign": ("captain in game name", captain_firstname),
-        "playerthree_firstname": ("captain first name", captain_firstname),
-        "playerthree_lastname": ("captain last name", captain_lastname),
-        "playerthree_ign": ("captain in game name", captain_firstname),
-        "playerfour_firstname": ("captain first name", captain_firstname),
-        "playerfour_lastname": ("captain last name", captain_lastname),
-        "playerfour_ign": ("captain in game name", captain_firstname),
-        "playerfive_firstname": ("captain first name", captain_firstname),
-        "playerfive_lastname": ("captain last name", captain_lastname),
-        "playerfive_ign": ("captain in game name", captain_firstname),
+        "captain_ign": ("captain in game name", captain_ign),
+        "playertwo_firstname": ("player two first name", playertwo_firstname),
+        "playertwo_lastname": ("player two last name", playertwo_lastname),
+        "playertwo_ign": ("player two in game name", playertwo_ign),
+        "playerthree_firstname": ("player three first name", playerthree_firstname),
+        "playerthree_lastname": ("player three last name", playerthree_lastname),
+        "playerthree_ign": ("player three in game name", playerthree_ign),
+        "playerfour_firstname": ("player fourfirst name", playerfour_firstname),
+        "playerfour_lastname": ("player four last name", playerfour_lastname),
+        "playerfour_ign": ("player four in game name", playerfour_ign),
+        "playerfive_firstname": ("captain first name", playerfive_firstname),
+        "playerfive_lastname": ("captain last name", playerfive_lastname),
+        "playerfive_ign": ("captain in game name", playerfive_ign),
         "email_address": ("email address", email_address),
         "phone_number": ("phone number", phone_number)
     }
@@ -138,16 +138,25 @@ async def registration_submit_click(
                           f"Successfully sent application and receipt to {email_address} ."
                           f"Please keep checking your email for further updates soon. ",
                           type='positive',
-                          color='purple-9')
+                          color='purple-9',
+                          multi_line=True,
+                          classes='multi-line-notification')
             else:
-                ui.notify(f"Thank you!"
+                ui.notify(f"Thank you! "
                           f"Successfully sent application. Failed to send receipt to {email_address}. "
                           f"If you need your receipt, please contact support. "
-                          f"Otherwise, please keep checking your email for further updates soon.")
+                          f"Otherwise, please keep checking your email for further updates soon.",
+                          type='positive',
+                          color='purple-9',
+                          multi_line=True,
+                          classes='multi-line-notification')
         else:
             ui.notify(f"We could not receive your application. "
-                      f"We are experiencing technical difficulties,"
-                      f"please try again later.", type="negative")
+                      f"We are experiencing technical difficulties, "
+                      f"please try again later.",
+                      type="negative",
+                      multi_line=True,
+                      classes='multi-line-notification')
 
 async def registration_application_received(
             team_name,
@@ -169,9 +178,9 @@ async def registration_application_received(
             email_address,
             phone_number
 ):
-    email_sender = 'auwspemailiguess@gmail.com'
+    email_sender = 'uwspdummyemailiguess'
     email_password = os.environ.get('EMAIL_PASS')
-    email_receiver = "testemail@gmail.com"
+    email_receiver = "uwspregistrationemailhere"
     registration_deadline = "07/01/2024"
     subject = 'Registration Received'
     body = f'''
