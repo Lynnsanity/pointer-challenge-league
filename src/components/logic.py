@@ -63,8 +63,8 @@ class Enable:
         value = e.value.strip()
         if '@' in value:
             valid = self.is_valid_email(value)
-        elif value.isdigit():
-            valid = self.is_valid_phone_number(value)
+        elif any(char.isdigit() for char in value) and sum(char.isdigit() for char in value) == 10:
+            valid = self.empty(value) and self.char_limit(value)
         else:
             valid = self.empty(value) and self.char_limit(value)
         self.inputs[field_id] = valid
