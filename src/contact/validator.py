@@ -67,7 +67,7 @@ async def contact_submit_click(first_name, last_name, email_address, message_sum
 
 # the format of the email to support and some env variables needed to then use sender to send email
 async def contact_receipt(first_name, last_name, email_address, message_summary):
-    email_sender = 'someuwspemail@info.org'
+    email_sender = 'lynnellesaavedra8@gmail.com'
     email_password = os.environ.get('EMAIL_PASS')
     email_receiver = email_address
     subject = "Contact Support Receipt"
@@ -113,9 +113,9 @@ async def contact_receipt(first_name, last_name, email_address, message_summary)
 
 # the format of the email to support and some env variables needed to then use sender to send email
 async def contact_message_received(first_name, last_name, email_address, message_summary):
-    email_sender = 'senderdummyemail'
+    email_sender = 'lynnellesaavedra8@gmail.com'
     email_password = os.environ.get('EMAIL_PASS')
-    email_receiver = 'uwspsupport'
+    email_receiver = 'slushiesan99@gmail.com'
     subject = "Contact Support Request"
     body = f'''
     <!DOCTYPE html>
