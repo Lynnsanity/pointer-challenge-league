@@ -16,7 +16,7 @@ def header_footer():
                     ui.menu_item('Rules', on_click=lambda: ui.open('/rules')).classes('px-5 py-3 flex justify-center text-center')
                     ui.menu_item('Register', on_click=lambda: ui.open('/register')).classes('px-5 py-3flex justify-center text-center')
                     ui.menu_item('Standings', on_click=lambda: ui.open('/standings')).classes('px-5 py-3 flex justify-center text-center')
-                    ui.menu_item('Contact', on_click=lambda: ui.open('/standings')).classes('px-5 py-3 flex justify-center text-center')
+                    ui.menu_item('Contact', on_click=lambda: ui.open('/contact')).classes('px-5 py-3 flex justify-center text-center')
 
     with ui.footer(fixed=False).style('background-color: #181818'):
         with ui.row().classes('mx-auto w-full'):
