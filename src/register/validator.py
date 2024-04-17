@@ -26,6 +26,7 @@ async def registration_submit_click(
     playerfive_ign,
     email_address,
     phone_number,
+    team_logo=None,
     #school_name,
     #team_logo=None,
     #subone_firstname=None,
@@ -57,7 +58,9 @@ async def registration_submit_click(
                       email_address,
                       phone_number]
 
-    fields = {
+    optional_list = []
+
+    mandatory_fields = {
         "captain_firstname": ("captain first name", captain_firstname),
         "captain_lastname": ("captain last name", captain_lastname),
         "captain_ign": ("captain in game name", captain_ign),
@@ -76,17 +79,26 @@ async def registration_submit_click(
         "email_address": ("email address", email_address),
         "phone_number": ("phone number", phone_number)
     }
+
+    optional_fields = {}
+
     errors = []
 
-    for field, (label, value) in fields.items():
+    for mandatory_field, (label, value) in mandatory_fields.items():
         if not enable.empty(value):
             errors.append(f"Please enter your {label}.")
         elif not enable.char_limit(value):
             errors.append(f"There are too many characters in {label}.")
-        elif field == "email_address" and not enable.is_valid_email(value):
+        elif mandatory_field == "email_address" and not enable.is_valid_email(value):
             errors.append("Please enter a valid email address.")
-        elif field == "phone_number" and not enable.is_valid_phone_number(value):
+        elif mandatory_field == "phone_number" and not enable.is_valid_phone_number(value):
             errors.append("Please enter a valid phone number.")
+
+    if team_logo is not None:
+        optional_fields["team_logo"] = ("team logo", team_logo)
+
+    for optional_field, (label, value) in optional_fields.items():
+        print(team_logo)
 
     if errors:
         for error in errors:
@@ -95,6 +107,7 @@ async def registration_submit_click(
 
         email_sent = await registration_application_received(
             team_name=team_name,
+            team_logo=team_logo,
             captain_firstname=captain_firstname,
             captain_lastname=captain_lastname,
             captain_ign=captain_ign,
@@ -116,6 +129,7 @@ async def registration_submit_click(
         if email_sent:
             receipt = await send_confirmation(
                 team_name=team_name,
+                team_logo=team_logo,
                 captain_firstname=captain_firstname,
                 captain_lastname=captain_lastname,
                 captain_ign=captain_ign,
@@ -140,7 +154,8 @@ async def registration_submit_click(
                           type='positive',
                           color='purple-9',
                           multi_line=True,
-                          classes='multi-line-notification')
+                          classes='multi-line-notification',
+                          close_button='OK')
             else:
                 ui.notify(f"Thank you! "
                           f"Successfully sent application. Failed to send receipt to {email_address}. "
@@ -149,17 +164,20 @@ async def registration_submit_click(
                           type='positive',
                           color='purple-9',
                           multi_line=True,
-                          classes='multi-line-notification')
+                          classes='multi-line-notification',
+                          close_button='OK')
         else:
             ui.notify(f"We could not receive your application. "
                       f"We are experiencing technical difficulties, "
                       f"please try again later.",
                       type="negative",
                       multi_line=True,
-                      classes='multi-line-notification')
+                      classes='multi-line-notification',
+                      close_button='OK')
 
 async def registration_application_received(
             team_name,
+            team_logo,
             captain_firstname,
             captain_lastname,
             captain_ign,
@@ -178,9 +196,9 @@ async def registration_application_received(
             email_address,
             phone_number
 ):
-    email_sender = 'uwspdummyemailiguess'
+    email_sender = 'lynnellesaavedra8@gmail.com'
     email_password = os.environ.get('EMAIL_PASS')
-    email_receiver = "uwspregistrationemailhere"
+    email_receiver = "slushiesan99@gmail.com"
     registration_deadline = "07/01/2024"
     subject = 'Registration Received'
     body = f'''
@@ -200,6 +218,7 @@ async def registration_application_received(
                     <p>
                     Application Details:<br>
                     Team Name: {team_name}<br>
+                    Team Logo: {team_logo}<br>
                     Captain Name: {captain_firstname} {captain_lastname}<br>
                     Captain IGN: {captain_ign}<br>
                     Player 2 Name: {playertwo_firstname} {playertwo_lastname}<br>
@@ -235,6 +254,7 @@ async def registration_application_received(
 
 async def send_confirmation(
             team_name,
+            team_logo,
             captain_firstname,
             captain_lastname,
             captain_ign,
@@ -253,7 +273,7 @@ async def send_confirmation(
             email_address,
             phone_number
 ):
-    email_sender = 'auwspemailiguess@gmail.com'
+    email_sender = 'lynnellesaavedra8@gmail.com'
     email_password = os.environ.get('EMAIL_PASS')
     email_receiver = email_address
     registration_deadline = "07/01/2024"
@@ -294,6 +314,7 @@ async def send_confirmation(
                     <p>
                     Application Details:<br>
                     Team Name: {team_name}<br>
+                    Team Logo: {team_logo}<br>
                     Captain Name: {captain_firstname} {captain_lastname}<br>
                     Captain IGN: {captain_ign}<br>
                     Player 2 Name: {playertwo_firstname} {playertwo_lastname}<br>
