@@ -3,6 +3,13 @@ from components.logic import Enable
 from register.validator import registration_submit_click
 from register.sub_logic import Logic
 
+import base64
+
+base_bytes = None
+
+def handle_upload(e: events.UploadEventArguments) -> None:
+    global base_bytes
+    base_bytes = base64.b64encode(e.content.read())
 
 def form():
     enable = Enable()
@@ -25,9 +32,10 @@ def form():
                        school name here').classes('bg-purple')
 
         ui.label('Team Logo').classes('w-full flex text-start text-lg text-[#ffc82e] mt-5')
-        team_logo = ui.upload(on_upload=lambda e: ui.notify(f'Uploaded {e.name}'),
-              on_rejected=lambda: ui.notify('File size too big. Maximum size is 500KB'),
-              max_file_size=500_000).classes('max-w-full').props('color=purple-9 dark') \
+        team_logo = ui.upload(on_upload=handle_upload,
+              auto_upload=True,
+              on_rejected=lambda: ui.notify('File size too big. Maximum size is 200KB'),
+              max_file_size=200_000).classes('max-w-full').props('color=purple-9 dark') \
             .classes('w-full text-start')
 
 
