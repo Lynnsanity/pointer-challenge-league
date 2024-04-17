@@ -106,7 +106,7 @@ async def home_page():
                         .classes('w-full h-full opacity-0 hover:opacity-100 flex justify-center items-center text-center'):
                     ui.image('img/games/rocketleaguelogo.webp').classes('w-full')
 
-    with ui.row().classes('w-full'):
+    with ui.row().classes('w-full my-5'):
         ui.image('img/pcl-logos/contact-us.png').classes('mx-auto w-3/4 md:w-1/2 lg:w-1/4 xl:w-1/4 my-5 flex justify-center')
 
 
