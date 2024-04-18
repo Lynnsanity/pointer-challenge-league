@@ -57,7 +57,7 @@ async def home_page():
         ui.image('img/pcl-logos/games-we-play.png').classes('mx-auto w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/3 my-5 flex justify-center')
 
 
-    with ui.row().classes('grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 w-full justify-center items-center text-center'):
+    with ui.row().classes('grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 w-full mb-10 justify-center items-center text-center'):
             with ui.image('img/games/overwatch.jpg') \
                     .classes('mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg \
                              aspect-square w-4/5 no-shadow bg-transparent border-[#ffc82e] border-2 mt-5'):
@@ -106,12 +106,6 @@ async def home_page():
                         .classes('w-full h-full opacity-0 hover:opacity-100 flex justify-center items-center text-center'):
                     ui.image('img/games/rocketleaguelogo.webp').classes('w-full')
 
-    with ui.row().classes('w-full my-5'):
-        ui.image('img/pcl-logos/contact-us.png').classes('mx-auto w-3/4 md:w-1/2 lg:w-1/4 xl:w-1/4 my-5 flex justify-center')
-
-
-
-
-    #ui.query('body').classes('bg-gradient-to-t from-[#512698] to-[#FFC82e]')
-
-    #ui.query('body').classes('bg-gradient-to-t from-zinc-950 to-white-500')
+    with ui.row().classes('mx-auto w-full bg-[#512698] p-5 flex items-center justify-center'):
+        ui.image('img/pcl-logos/questions-feedback-concerns.png').classes('w-full md:w-1/2 lg:w-1/2 xl:w-1/2')
+        ui.button('Contact Us').props('color=amber text-color=black')
