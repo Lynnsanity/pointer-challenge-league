@@ -29,7 +29,7 @@ def form():
             .props('outlined v-model="text" color=amber dark') \
                 .classes('w-full mt-5') as school_name:
             ui.tooltip('Optional: If your team is officially affiliated with a Uni / College, enter the \
-                       school name here').classes('bg-purple')
+                       school name here').classes('bg-[#512698]')
 
         ui.label('Team Logo').classes('w-full flex text-start text-lg text-[#ffc82e] mt-5')
         team_logo = ui.upload(on_upload=handle_upload,

@@ -15,7 +15,9 @@ async def standings_page():
             with the contestants and match timings once the deadline for applications has passed.') \
             .classes('text-xl font-mono w-full flex text-white justify-center text-center')
         with ui.row().classes('mx-auto w-full h-full'):
-            ui.html('<iframe src="https://challonge.com/mzkr4d27/module" width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>').classes('w-full h-full')
+            iframe_content = '''
+                <iframe src="https://challonge.com/mzkr4d27/module" width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>'''
+            ui.html(iframe_content).classes('w-full h-full')
             ui.mermaid('''
                 graph BT
 
