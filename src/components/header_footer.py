@@ -120,5 +120,3 @@ def header_footer():
                             with ui.avatar(color='#ffc82e'):
                                 ui.html(tiktok_logo).classes('mb-1 w-[25px] h-[25px]')
                                 ui.tooltip('TikTok').classes('bg-[#512698]')
-            #ui.label('example').classes('w-full flex items-center justify-center')
-
