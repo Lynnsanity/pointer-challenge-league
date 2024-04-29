@@ -1,27 +1,36 @@
 from nicegui import ui, events
+from components.logic import Enable
+
 
 class Logic:
     def __init__(self):
+        enable = Enable()
         self.selected_value = 0
-        self.subone_firstname = ui.input('First Name') \
+        self.subone_firstname = ui.input('Sub1 First Name', on_change=enable.registration_on_change, \
+                                         validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
             .props('outlined v-model="text" color=amber dark') \
             .classes('w-full')
-        self.subone_lastname = ui.input('Last Name') \
+        self.subone_lastname = ui.input('Sub1 Last Name', on_change=enable.registration_on_change, \
+                                        validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
             .props('outlined v-model="text" color=amber dark') \
             .classes('w-full')
-        self.subone_ign = ui.input('In Game Name') \
+        self.subone_ign = ui.input('Sub1 In Game Name', on_change=enable.registration_on_change, \
+                                         validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
             .props('outlined v-model="text" color=amber dark') \
             .classes('w-full')
         self.subone_firstname.visible = False
         self.subone_lastname.visible = False
         self.subone_ign.visible = False
-        self.subtwo_firstname = ui.input('First Name') \
+        self.subtwo_firstname = ui.input('Sub2 First Name', on_change=enable.registration_on_change, \
+                                         validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
             .props('outlined v-model="text" color=amber dark') \
             .classes('w-full')
-        self.subtwo_lastname = ui.input('Last Name') \
+        self.subtwo_lastname = ui.input('Sub2 Last Name', on_change=enable.registration_on_change, \
+                                         validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
             .props('outlined v-model="text" color=amber dark') \
             .classes('w-full')
-        self.subtwo_ign = ui.input('In Game Name') \
+        self.subtwo_ign = ui.input('Sub2 In Game Name', on_change=enable.registration_on_change, \
+                                         validation={"Required Field": enable.empty, "Character Limit Exceeded": enable.char_limit}) \
             .props('outlined v-model="text" color=amber dark') \
             .classes('w-full')
         self.subtwo_firstname.visible = False
