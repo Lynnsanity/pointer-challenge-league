@@ -15,6 +15,16 @@ class Enable:
     # input can't be greater than 35 characters
     def char_limit(self, v):
         return v and len(v) < 35
+    
+    def optional_char_limit(self, v):
+        if len(v) == 0:
+            return True
+        return v and len(v) < 35
+
+    def validate_optional_field(self, value):
+        if value.strip():
+            return self.optional_char_limit(value)
+        return True
 
     # for message summary specifically, we want users to be
     # able to put up to 512 characters
@@ -67,6 +77,18 @@ class Enable:
             valid = self.empty(value) and self.char_limit(value)
         else:
             valid = self.empty(value) and self.char_limit(value)
+        self.inputs[field_id] = valid
+        self.update()
+
+    def registration_on_optional_change(self, e):
+        field_id = e.sender.id
+        value = e.value.strip()
+        if '@' in value:
+            valid = self.is_valid_email(value)
+        elif any(char.isdigit() for char in value) and sum(char.isdigit() for char in value) == 10:
+            valid = self.empty(value) and self.optional_char_limit(value)
+        else:
+            valid = self.optional_char_limit(value)
         self.inputs[field_id] = valid
         self.update()
 
