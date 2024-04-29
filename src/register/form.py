@@ -24,10 +24,10 @@ def form():
             .props('outlined v-model="text" color=amber dark') \
             .classes('w-full')
         # optional affiliated school
-        with ui.input('University / College Name', on_change=enable.registration_on_change,
-                      validation={"Character Limit Exceeded": enable.char_limit}) \
+        with ui.input('University / College Name', on_change=enable.registration_on_optional_change,
+                      validation={"Character Limit Exceeded": enable.validate_optional_field})\
             .props('outlined v-model="text" color=amber dark') \
-                .classes('w-full mt-5') as school_name:
+                .classes('w-full mt-5') as team_school:
             ui.tooltip('Optional: If your team is officially affiliated with a Uni / College, enter the \
                        school name here').classes('bg-[#512698]')
 
@@ -133,7 +133,7 @@ def form():
             logic = Logic()
             with ui.row().classes('w-full flex text-start text-sm text-white'):
                     ui.markdown('How many substitutes?')
-                    ui.radio([0, 1, 2], value=0, on_change=logic.update_visibility) \
+                    substitute_count = ui.radio([0, 1, 2], value=0, on_change=logic.update_visibility) \
                         .props('dark color=purple-9 inline')
             subone_firstname = logic.subone_firstname
             subone_lastname = logic.subone_lastname
@@ -164,35 +164,34 @@ def form():
         #register_button = ui.button('submit registration', on_click=lambda e:submit_registration_um(teamy=teeeam)) \
         #    .props('color=amber text-color=black')
         #register_button.bind_enabled_from(enable, "no_errors")
-        spinner = ui.spinner(size='xl').props('color=amber').classes('absolute-center')
-        spinner.visible = False
         register_button = ui.button('Submit', on_click=lambda: registration_submit_click(
-            team_name.value.strip(),
-            captain_firstname.value.strip(),
-            captain_lastname.value.strip(),
-            captain_ign.value.strip(),
-            playertwo_firstname.value.strip(),
-            playertwo_lastname.value.strip(),
-            playertwo_ign.value.strip(),
-            playerthree_firstname.value.strip(),
-            playerthree_lastname.value.strip(),
-            playerthree_ign.value.strip(),
-            playerfour_firstname.value.strip(),
-            playerfour_lastname.value.strip(),
-            playerfour_ign.value.strip(),
-            playerfive_firstname.value.strip(),
-            playerfive_lastname.value.strip(),
-            playerfive_ign.value.strip(),
+            team_name=team_name.value.strip(),
+            team_school=team_school.value.strip(),
+            captain_firstname=captain_firstname.value.strip(),
+            captain_lastname=captain_lastname.value.strip(),
+            captain_ign=captain_ign.value.strip(),
+            playertwo_firstname=playertwo_firstname.value.strip(),
+            playertwo_lastname=playertwo_lastname.value.strip(),
+            playertwo_ign=playertwo_ign.value.strip(),
+            playerthree_firstname=playerthree_firstname.value.strip(),
+            playerthree_lastname=playerthree_lastname.value.strip(),
+            playerthree_ign=playerthree_ign.value.strip(),
+            playerfour_firstname=playerfour_firstname.value.strip(),
+            playerfour_lastname=playerfour_lastname.value.strip(),
+            playerfour_ign=playerfour_ign.value.strip(),
+            playerfive_firstname=playerfive_firstname.value.strip(),
+            playerfive_lastname=playerfive_lastname.value.strip(),
+            playerfive_ign=playerfive_ign.value.strip(),
+            substitute_count=substitute_count.value,
+            subone_firstname=subone_firstname.value.strip(),
+            subone_lastname=subone_lastname.value.strip(),
+            subone_ign=subone_ign.value.strip(),
+            subtwo_firstname=subtwo_firstname.value.strip(),
+            subtwo_lastname=subtwo_lastname.value.strip(),
+            subtwo_ign=subtwo_ign.value.strip(),
+            email_address=email_address.value.strip(),
+            phone_number=phone_number.value.strip())).props('color=amber text-color=black').classes('text-lg')
             #team_logo,
-            #school_name.value.strip(),
-            #subone_firstname.value.strip(),
-            #subone_lastname.value.strip(),
-            #subone_ign.value.strip(),
-            #subtwo_firstname.value.strip(),
-            #subtwo_lastname.value.strip(),
-            #subtwo_ign.value.strip(),
-            email_address.value.strip(),
-            phone_number.value.strip())).props('color=amber text-color=black').classes('text-lg')
         register_button.bind_enabled_from(enable, "no_errors")
 
 
