@@ -65,7 +65,7 @@ async def contact_submit_click(first_name, last_name, email_address, message_sum
                       "We are experiencing technical difficulties, please try again later.",
                       type="negative")
 
-# the format of the email to support and some env variables needed to then use sender to send email
+# send the user a receipt and some env variables needed to then use sender to send email
 async def contact_receipt(first_name, last_name, email_address, message_summary):
     email_sender = 'lynnellesaavedra8@gmail.com'
     email_password = os.environ.get('EMAIL_PASS')
@@ -111,7 +111,7 @@ async def contact_receipt(first_name, last_name, email_address, message_summary)
     subject=subject,
     body=body)
 
-# the format of the email to support and some env variables needed to then use sender to send email
+# email to support and some env variables needed to then use sender to send email
 async def contact_message_received(first_name, last_name, email_address, message_summary):
     email_sender = 'lynnellesaavedra8@gmail.com'
     email_password = os.environ.get('EMAIL_PASS')
