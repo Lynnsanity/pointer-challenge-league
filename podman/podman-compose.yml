@@ -1,0 +1,10 @@
+services:
+  pcl:
+    image: docker.io/lynnsanity/pcl
+    env:
+      AUTH_USER: username
+      AUTH_PASS: password
+      STORAGE_SECRET: 123
+    ports:
+      - 8080:8080
+
