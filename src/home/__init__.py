@@ -53,7 +53,7 @@ async def home_page():
         ui.image('img/pcl-logos/games-we-play.png').classes('mx-auto w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/3 my-5 flex justify-center')
 
 
-    with ui.row().classes('grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 w-full mb-10 justify-center items-center text-center'):
+    with ui.row().classes('grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 w-full mb-10 justify-center items-center text-center'):
             with ui.image('img/games/overwatch.jpg') \
                     .classes('mx-auto transition-all duration-500 ease-in-out hover:scale-105 rounded-lg \
                              aspect-square w-4/5 no-shadow bg-transparent border-[#ffc82e] border-2 mt-5'):
