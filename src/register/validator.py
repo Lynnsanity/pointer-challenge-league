@@ -7,6 +7,7 @@ import os
 import ssl
 import smtplib
 
+
 async def registration_submit_click(
     team_name,
     captain_firstname,
@@ -26,6 +27,8 @@ async def registration_submit_click(
     playerfive_ign,
     email_address,
     phone_number,
+    agree_checkbox,
+    image_data=None,
     team_school=None,
     substitute_count=None,
     subone_firstname=None,
@@ -33,8 +36,7 @@ async def registration_submit_click(
     subone_ign=None,
     subtwo_firstname=None,
     subtwo_lastname=None,
-    subtwo_ign=None
-    #team_logo=None,
+    subtwo_ign=None,
 ):
     enable = Enable()
 
@@ -56,12 +58,13 @@ async def registration_submit_click(
         playerfive_lastname,
         playerfive_ign,
         email_address,
-        phone_number
+        phone_number,
+        agree_checkbox
     ]
 
     optional_list = [
         team_school,
-        substitute_count
+        substitute_count,
     ]
 
     mandatory_fields = {
@@ -75,7 +78,7 @@ async def registration_submit_click(
         "playerthree_firstname": ("player three first name", playerthree_firstname),
         "playerthree_lastname": ("player three last name", playerthree_lastname),
         "playerthree_ign": ("player three in game name", playerthree_ign),
-        "playerfour_firstname": ("player fourfirst name", playerfour_firstname),
+        "playerfour_firstname": ("player four first name", playerfour_firstname),
         "playerfour_lastname": ("player four last name", playerfour_lastname),
         "playerfour_ign": ("player four in game name", playerfour_ign),
         "playerfive_firstname": ("player five first name", playerfive_firstname),
@@ -83,6 +86,7 @@ async def registration_submit_click(
         "playerfive_ign": ("player five in game name", playerfive_ign),
         "email_address": ("email address", email_address),
         "phone_number": ("phone number", phone_number),
+        "agree_checkbox": ("checkbox", agree_checkbox),
     }
 
     optional_fields = {
@@ -96,17 +100,18 @@ async def registration_submit_click(
         "subtwo_ign": ("substitute two in game name", subtwo_ign)
     }
 
-
-    #if team_logo is not None:
-    #    optional_fields["team_logo"] = ("team logo", team_logo)
-
-    #for optional_field, (label, value) in optional_fields.items():
-    #    print(team_logo)
-
     # validation functions for mandatory fields
     def validate_mandatory_fields():
         errors = []
         for mandatory_field, (label, value) in mandatory_fields.items():
+            if mandatory_field == "agree_checkbox":
+                if agree_checkbox == True:
+                    continue
+                else:
+                    errors.append(f"Your team must agree to the rules by clicking the {label}")
+                    continue
+            else:
+                pass
             if not enable.empty(value):
                 errors.append(f"Please enter your {label}.")
             elif not enable.char_limit(value):
@@ -161,6 +166,7 @@ async def registration_submit_click(
         email_sent = await registration_application_received(
             team_name=team_name,
             team_school=team_school,
+            image_data=image_data,
             captain_firstname=captain_firstname,
             captain_lastname=captain_lastname,
             captain_ign=captain_ign,
@@ -190,6 +196,7 @@ async def registration_submit_click(
             receipt = await send_confirmation(
                 team_name=team_name,
                 team_school=team_school,
+                image_data=image_data,
                 captain_firstname=captain_firstname,
                 captain_lastname=captain_lastname,
                 captain_ign=captain_ign,
@@ -264,6 +271,7 @@ async def registration_application_received(
             email_address,
             phone_number,
             team_school=None,
+            image_data=None,
             subone_firstname=None,
             subone_lastname=None,
             subone_ign=None,
@@ -294,6 +302,7 @@ async def registration_application_received(
                         Application Details:<br>
                         Team Name: {team_name}<br>
                         Team School: {team_school if team_school else "None"}<br>
+                        Team Logo: {'Attached below' if image_data else 'None provided'}<br>
                         Captain Name: {captain_firstname} {captain_lastname}<br>
                         Captain IGN: {captain_ign}<br>
                         Player 2 Name: {playertwo_firstname} {playertwo_lastname}<br>
@@ -354,6 +363,7 @@ async def registration_application_received(
     '''
 
     return send_email(
+        image_data=image_data,
         email_sender=email_sender,
         email_password=email_password,
         email_receiver=email_receiver,
@@ -381,6 +391,7 @@ async def send_confirmation(
             email_address,
             phone_number,
             team_school=None,
+            image_data=None,
             subone_firstname=None,
             subone_lastname=None,
             subone_ign=None,
@@ -428,6 +439,7 @@ async def send_confirmation(
                     Application Details:<br>
                     Team Name: {team_name}<br>
                     Team School: {team_school if team_school else "None"}<br>
+                    Team Logo: {'Attached below' if image_data else 'None provided'}<br>
                     Captain Name: {captain_firstname} {captain_lastname}<br>
                     Captain IGN: {captain_ign}<br>
                     Player 2 Name: {playertwo_firstname} {playertwo_lastname}<br>
@@ -499,6 +511,7 @@ async def send_confirmation(
     </html>
     '''
     return send_email(
+        image_data=image_data,
         email_sender=email_sender,
         email_password=email_password,
         email_receiver=email_receiver,
