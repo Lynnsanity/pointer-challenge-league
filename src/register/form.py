@@ -5,11 +5,12 @@ from register.sub_logic import Logic
 
 import base64
 
-base_bytes = None
+image_data = None
 
-def handle_upload(e: events.UploadEventArguments) -> None:
-    global base_bytes
-    base_bytes = base64.b64encode(e.content.read())
+def handle_upload(e: events.UploadEventArguments):
+    global image_data
+    image_data = base64.b64encode(e.content.read())
+    return image_data
 
 def form():
     enable = Enable()
@@ -37,7 +38,6 @@ def form():
               on_rejected=lambda: ui.notify('File size too big. Maximum size is 200KB'),
               max_file_size=200_000).classes('max-w-full').props('color=purple-9 dark') \
             .classes('w-full text-start')
-
 
         # tourney requirements
         with ui.column() \
@@ -190,7 +190,9 @@ def form():
             subtwo_lastname=subtwo_lastname.value.strip(),
             subtwo_ign=subtwo_ign.value.strip(),
             email_address=email_address.value.strip(),
-            phone_number=phone_number.value.strip())).props('color=amber text-color=black').classes('text-lg')
+            phone_number=phone_number.value.strip(),
+            agree_checkbox=agree_checkbox.value,
+            image_data=image_data)).props('color=amber text-color=black').classes('text-lg')
             #team_logo,
         register_button.bind_enabled_from(enable, "no_errors")
 
