@@ -28,7 +28,7 @@ async def home_page():
                     ui.label('Fair play is at the core of our community. '
                              'Before you dive into the action, take a moment to familiarize yourself '
                              'with our rules. Click here to explore further details. ') \
-                        .classes('text-lg sm:text-sm md:text-md lg:text-lg xl:text-lg 2xl:text-lg text-[#ffc82e] px-5 font-mono font-bold')
+                        .classes('text-lg sm:md:text-sm md:text-md lg:text-lg xl:text-lg 2xl:text-3xl text-[#ffc82e] px-5 font-mono font-bold')
         with ui.link(target='/register').classes('no-underline'):
             with ui.card().tight().classes('w-full h-full no-shadow aspect-square bg-[#FFC82E]'):
                 ui.icon('feed').props('flat color=white').classes('mx-auto w-full mt-10 text-9xl text-center')
@@ -38,7 +38,7 @@ async def home_page():
                              "Take the next step by clicking here to fill "
                              "out the application for your team's gaming sessions. "
                              "Let's get you in the game – register now! ") \
-                        .classes('text-lg sm:text-sm md:text-md lg:text-lg xl:text-lg 2xl:text-lg text-[#512698] px-5 font-mono font-bold')
+                        .classes('text-lg sm:md:text-sm md:text-md lg:text-lg xl:text-lg 2xl:text-3xl text-[#512698] px-5 font-mono font-bold')
         with ui.link(target='/standings').classes('no-underline'):
             with ui.card().tight().classes('w-full h-full no-shadow aspect-square bg-[#512698]'):
                 ui.icon('emoji_events').props('flat color=white').classes('mx-auto w-full mt-10 text-9xl text-center')
@@ -47,7 +47,7 @@ async def home_page():
                     ui.label("Curious about where your team stands? Click here to view "
                              "the latest standings and see how you stack up against the "
                              "competition. Keep track of your progress and aim for the top spot!") \
-                        .classes('text-lg sm:text-sm md:text-md lg:text-lg xl:text-lg 2xl:text-lg text-[#ffc82e] px-5 font-mono font-bold')
+                        .classes('text-lg sm:md:text-sm md:text-md lg:text-lg xl:text-lg 2xl:text-3xl text-[#ffc82e] px-5 font-mono font-bold')
 
     with ui.row().classes('w-full'):
         ui.image('img/pcl-logos/games-we-play.png').classes('mx-auto w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/3 my-5 flex justify-center')
