@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-pcl
+  namespace: pcl
+spec:
+  rules:
+  - host: domainhere.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pcl-svc
+            port:
+              number: 8080
+  ingressClassName: nginx
+---
